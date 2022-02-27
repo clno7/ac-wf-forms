@@ -1,4 +1,3 @@
-<script type="text/javascript">
 window.cfields = {"26":"utmsource","27":"utmmedium","30":"utmcampaign"};
 window._show_thank_you = function(id, message, trackcmp_url, email) {
   var form = document.getElementById('_form_' + id + '_'), thank_you = form.querySelector('._form-thank-you');
@@ -320,5 +319,3 @@ window._load_script = function(url, callback) {
   };
   addEvent(form_to_submit, 'submit', form_submit);
 })();
-
-</script>
