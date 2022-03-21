@@ -17,7 +17,7 @@
  #_form_11_ ._form-branding { color:#fff; font-size:10px; clear:both; text-align:left; margin-top:30px; font-weight:100; }
  #_form_11_ ._form-branding ._logo { display:block; width:130px; height:14px; margin-top:6px; background-image:url('https://d226aj4ao1t61q.cloudfront.net/hh9ujqgv5_aclogo_li.png'); background-size:130px auto; background-repeat:no-repeat; }
  #_form_11_ .form-sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0, 0, 0, 0); border:0; }
- #_form_11_ ._form-label,#_form_11_ ._form_element ._form-label { font-weight:normal; margin-bottom:5px; display:block; }
+ #_form_11_ ._form-label,#_form_11_ ._form_element ._form-label { font-weight:bold; margin-bottom:5px; display:block; }
  #_form_11_._dark ._form-branding { color:#333; }
  #_form_11_._dark ._form-branding ._logo { background-image:url('https://d226aj4ao1t61q.cloudfront.net/jftq2c8s_aclogo_dk.png'); }
  #_form_11_ ._form_element { position:relative; margin-bottom:10px; font-size:0; max-width:100%; }
@@ -50,6 +50,8 @@
  .pika-single { z-index:10000001 !important; }
  #_form_11_ input[type="text"].datetime_date { width:69%; display:inline; }
  #_form_11_ select.datetime_time { width:29%; display:inline; height:32px; }
+ #_form_11_ input[type="date"].datetime_date { width:69%; display:inline-flex; }
+ #_form_11_ input[type="time"].datetime_time { width:29%; display:inline-flex; }
  @media all and (min-width:320px) and (max-width:667px) { ::-webkit-scrollbar { display:none; }
  #_form_11_ { margin:0; width:100%; min-width:100%; max-width:100%; box-sizing:border-box; }
  #_form_11_ * { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; font-size:1em; }
@@ -85,6 +87,4 @@
 
  #_form_11_._form_11 { max-width:90vw !important; }
  #_form_11_ ._x65622401 ._form-title { font-size:14px; text-transform:uppercase; color:black; }
- #_form_11_ ._submit { padding:10px 30px !important; border-radius:0 !important; -webkit-border-radius:0 !important; -moz-border-radius:0 !important;}
-
- #_form_11_ ._x65622401 ._form-title {font-weight:200 !important;}
+ #_form_11_ ._submit { padding:10px 30px !important; border-radius:0 !important; }
