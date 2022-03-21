@@ -17,7 +17,7 @@
  #_form_7_ ._form-branding { color:#fff; font-size:10px; clear:both; text-align:left; margin-top:30px; font-weight:100; }
  #_form_7_ ._form-branding ._logo { display:block; width:130px; height:14px; margin-top:6px; background-image:url('https://d226aj4ao1t61q.cloudfront.net/hh9ujqgv5_aclogo_li.png'); background-size:130px auto; background-repeat:no-repeat; }
  #_form_7_ .form-sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0, 0, 0, 0); border:0; }
- #_form_7_ ._form-label,#_form_7_ ._form_element ._form-label { font-weight:400; margin-bottom:5px; display:block; }
+ #_form_7_ ._form-label,#_form_7_ ._form_element ._form-label { font-weight:bold; margin-bottom:5px; display:block; }
  #_form_7_._dark ._form-branding { color:#333; }
  #_form_7_._dark ._form-branding ._logo { background-image:url('https://d226aj4ao1t61q.cloudfront.net/jftq2c8s_aclogo_dk.png'); }
  #_form_7_ ._form_element { position:relative; margin-bottom:10px; font-size:0; max-width:100%; }
@@ -87,7 +87,5 @@
 
  #_form_7_._form_7 { max-width:90vw !important; }
  #_form_7_ ._x65622401 ._form-title { font-size:14px; text-transform:uppercase; color:black; }
- #_form_7_ ._submit { padding:10px 30px !important; border-radius:0px !important; -webkit-border-radius:0px !important; -moz-border-radius:0px !important; }
+ #_form_7_ ._submit { padding:10px 30px !important; }
  #_form_7_ ._x13725282 ._form-title { line-height:130%; }
-
- #_form_7_ ._x65622401 ._form-title {font-weight:200 !important;}
