@@ -98,5 +98,7 @@
  #_form_15_ ._x65622401 ._form-title { font-size:14px; text-transform:uppercase; color:black; }
  #_form_15_ ._submit { padding:10px 30px !important; border-radius:0 !important; }
  #_form_15_ ._x33052100 ._form-title { margin-top:10px; }
- input#field_34Yes\,\ I\ wish\ to\ receive\ digital\ communication\ from\ Green\ Innovation\ Group\ A\/S { margin-top: 5px; margin-right: 10px; }
+ ._row._checkbox-radio {display: inline-flex; }
+ input#field_34Yes\,\ I\ wish\ to\ receive\ digital\ communication\ from\ Green\ Innovation\ Group\ A\/S { margin-top: -5px; margin-right: 10px; }
  label { font-weight: 200; }
+
