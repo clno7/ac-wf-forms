@@ -1,4 +1,4 @@
-window.cfields = {"26":"utmsource","27":"utmmedium","30":"utmcampaign"};
+window.cfields = {"34":"digital_communication","26":"utmsource","27":"utmmedium","30":"utmcampaign"};
 window._show_thank_you = function(id, message, trackcmp_url, email) {
   var form = document.getElementById('_form_' + id + '_'), thank_you = form.querySelector('._form-thank-you');
   form.querySelector('._form-content').style.display = 'none';
@@ -58,7 +58,7 @@ window._load_script = function(url, callback) {
     var time = now.getTime();
     var expireTime = time + 1000 * 60 * 60 * 24 * 365;
     now.setTime(expireTime);
-    document.cookie = name + '=' + value + '; expires=' + now + ';path=/';
+    document.cookie = name + '=' + value + '; expires=' + now + ';path=/; Secure; SameSite=Lax;';// cannot be HttpOnly
   }
       var addEvent = function(element, event, func) {
     if (element.addEventListener) {
@@ -203,7 +203,7 @@ window._load_script = function(url, callback) {
           }
         } else {
           for (var i = 0; i < elem.options.length; i++) {
-            if (elem.options[i].selected && !elem.options[i].value) {
+            if (elem.options[i].selected && (!elem.options[i].value || (elem.options[i].value.match(/\n/g)))) {
               selected = false;
             }
           }
@@ -217,6 +217,12 @@ window._load_script = function(url, callback) {
         elem.className = elem.className + ' _has_error';
         no_error = false;
         tooltip = create_tooltip(elem, "This field is required.");
+      }
+    }
+    if (no_error && (elem.id == 'field[]' || elem.id == 'ca[11][v]')) {
+      if (elem.className.includes('phone-input-error')) {
+        elem.className = elem.className + ' _has_error';
+        no_error = false;
       }
     }
     if (no_error && elem.name == 'email') {
@@ -243,6 +249,11 @@ window._load_script = function(url, callback) {
         if(el.name === 'email' && el.value !== ""){
             return true
         }
+
+    if((el.id == 'field[]' || el.id == 'ca[11][v]') && el.className.includes('phone-input-error')){
+            return true
+        }
+
         return false
   };
   var validate_form = function(e) {
@@ -252,6 +263,12 @@ window._load_script = function(url, callback) {
       for (var i = 0, len = allInputs.length; i < len; i++) {
         var input = allInputs[i];
         if (needs_validate(input)) {
+          if (input.type == 'tel') {
+            addEvent(input, 'blur', function() {
+              this.value = this.value.trim();
+              validate_field(this, true);
+            });
+          }
           if (input.type == 'text' || input.type == 'number' || input.type == 'time') {
             addEvent(input, 'blur', function() {
               this.value = this.value.trim();
@@ -299,6 +316,65 @@ window._load_script = function(url, callback) {
   };
   addEvent(window, 'resize', resize_tooltips);
   addEvent(window, 'scroll', resize_tooltips);
+
+  var hidePhoneInputError = function(inputId) {
+    var errorMessage =  document.getElementById("error-msg-" + inputId);
+    var input = document.getElementById(inputId);
+    errorMessage.classList.remove("phone-error");
+    errorMessage.classList.add("phone-error-hidden");
+    input.classList.remove("phone-input-error");
+  };
+
+  var initializePhoneInput = function(input, defaultCountry) {
+    return window.intlTelInput(input, {
+      utilsScript: "https://unpkg.com/intl-tel-input@17.0.18/build/js/utils.js",
+      autoHideDialCode: false,
+      separateDialCode: true,
+      initialCountry: defaultCountry,
+      preferredCountries: []
+    });
+  }
+
+  var setPhoneInputEventListeners = function(inputId, input, iti) {
+    input.addEventListener('blur', function() {
+      var errorMessage = document.getElementById("error-msg-" + inputId);
+      if (input.value.trim()) {
+        if (iti.isValidNumber()) {
+          iti.setNumber(iti.getNumber());
+          if (errorMessage.classList.contains("phone-error")){
+            hidePhoneInputError(inputId);
+          }
+        } else {
+          showPhoneInputError(inputId)
+        }
+      } else {
+        if (errorMessage.classList.contains("phone-error")){
+          hidePhoneInputError(inputId);
+        }
+      }
+    });
+
+    input.addEventListener("countrychange", function() {
+      iti.setNumber('');
+    });
+
+    input.addEventListener("keydown", function(e) {
+        var charCode = (e.which) ? e.which : e.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 8) {
+               e.preventDefault();
+      }
+     });
+  };
+
+  var showPhoneInputError = function(inputId) {
+    var errorMessage =  document.getElementById("error-msg-" + inputId);
+    var input = document.getElementById(inputId);
+    errorMessage.classList.add("phone-error");
+    errorMessage.classList.remove("phone-error-hidden");
+    input.classList.add("phone-input-error");
+  };
+
+
   window['recaptcha_callback'] = function() {
   // Get all recaptchas in the DOM (there may be more than one form on the page).
   var recaptchas = document.getElementsByClassName("g-recaptcha");
@@ -313,8 +389,8 @@ window._load_script = function(url, callback) {
       grecaptcha.render(recaptcha_id, {"sitekey":sitekey,"stoken":stoken});
     }
   }
-};  _load_script("//www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit");
-    var _form_serialize = function(form){if(!form||form.nodeName!=="FORM"){return }var i,j,q=[];for(i=0;i<form.elements.length;i++){if(form.elements[i].name===""){continue}switch(form.elements[i].nodeName){case"INPUT":switch(form.elements[i].type){case"text":case"number":case"date":case"time":case"hidden":case"password":case"button":case"reset":case"submit":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value));break;case"checkbox":case"radio":if(form.elements[i].checked){q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value))}break;case"file":break}break;case"TEXTAREA":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value));break;case"SELECT":switch(form.elements[i].type){case"select-one":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value));break;case"select-multiple":for(j=0;j<form.elements[i].options.length;j++){if(form.elements[i].options[j].selected){q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].options[j].value))}}break}break;case"BUTTON":switch(form.elements[i].type){case"reset":case"submit":case"button":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value));break}break}}return q.join("&")};
+};  _load_script("https://www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit");
+    var _form_serialize = function(form){if(!form||form.nodeName!=="FORM"){return }var i,j,q=[];for(i=0;i<form.elements.length;i++){if(form.elements[i].name===""){continue}switch(form.elements[i].nodeName){case"INPUT":switch(form.elements[i].type){case"tel":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].previousSibling.querySelector('div.iti__selected-dial-code').innerText)+encodeURIComponent(" ")+encodeURIComponent(form.elements[i].value));break;case"text":case"number":case"date":case"time":case"hidden":case"password":case"button":case"reset":case"submit":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value));break;case"checkbox":case"radio":if(form.elements[i].checked){q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value))}break;case"file":break}break;case"TEXTAREA":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value));break;case"SELECT":switch(form.elements[i].type){case"select-one":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value));break;case"select-multiple":for(j=0;j<form.elements[i].options.length;j++){if(form.elements[i].options[j].selected){q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].options[j].value))}}break}break;case"BUTTON":switch(form.elements[i].type){case"reset":case"submit":case"button":q.push(form.elements[i].name+"="+encodeURIComponent(form.elements[i].value));break}break}}return q.join("&")};
   var form_submit = function(e) {
     e.preventDefault();
     if (validate_form()) {
