@@ -1,4 +1,4 @@
-window.cfields = {"19":"customorganization"};
+window.cfields = {"34":"digital_communication","26":"utmsource","27":"utmmedium","30":"utmcampaign"};
 window._show_thank_you = function(id, message, trackcmp_url, email) {
   var form = document.getElementById('_form_' + id + '_'), thank_you = form.querySelector('._form-thank-you');
   form.querySelector('._form-content').style.display = 'none';
@@ -72,7 +72,7 @@ window._load_script = function(url, callback) {
     }
   }
   var _removed = false;
-  var form_to_submit = document.getElementById('_form_15_');
+  var form_to_submit = document.getElementById('_form_9_');
   var allInputs = form_to_submit.querySelectorAll('input, select, textarea'), tooltips = [], submitted = false;
 
   var getUrlParam = function(name) {
@@ -395,8 +395,8 @@ window._load_script = function(url, callback) {
     e.preventDefault();
     if (validate_form()) {
       // use this trick to get the submit button & disable it using plain javascript
-      document.querySelector('#_form_15_submit').disabled = true;
-            var serialized = _form_serialize(document.getElementById('_form_15_')).replace(/%0A/g, '\\n');
+      document.querySelector('#_form_9_submit').disabled = true;
+            var serialized = _form_serialize(document.getElementById('_form_9_')).replace(/%0A/g, '\\n');
       var err = form_to_submit.querySelector('._form_error');
       err ? err.parentNode.removeChild(err) : false;
       _load_script('https://greeninnovationgroup.activehosted.com/proc.php?' + serialized + '&jsonp=true');
