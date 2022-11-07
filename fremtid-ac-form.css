@@ -1,4 +1,4 @@
- #_form_11_ { font-size:14px; line-height:1.6; font-family:arial, helvetica, sans-serif; margin:0; }
+#_form_11_ { font-size:14px; line-height:1.6; font-family:arial, helvetica, sans-serif; margin:0; }
  #_form_11_ * { outline:0; }
  ._form_hide { display:none; visibility:hidden; }
  ._form_show { display:block; visibility:visible; }
@@ -6,7 +6,7 @@
  #_form_11_._form-bottom { bottom:0; }
  #_form_11_._form-left { left:0; }
  #_form_11_._form-right { right:0; }
- #_form_11_ input[type="text"],#_form_11_ input[type="date"],#_form_11_ textarea { padding:6px; height:auto; border:#979797 1px solid; border-radius:4px; color:#000 !important; font-size:14px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; }
+ #_form_11_ input[type="text"],#_form_11_ input[type="tel"],#_form_11_ input[type="date"],#_form_11_ textarea { padding:6px; height:auto; border:#979797 1px solid; border-radius:4px; color:#000 !important; font-size:14px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; }
  #_form_11_ textarea { resize:none; }
  #_form_11_ ._submit { -webkit-appearance:none; cursor:pointer; font-family:arial, sans-serif; font-size:14px; text-align:center; background:#5db7ea !important; border:0 !important; -moz-border-radius:4px !important; -webkit-border-radius:4px !important; border-radius:4px !important; color:#fff !important; padding:10px !important; }
  #_form_11_ ._close-icon { cursor:pointer; background-image:url('https://d226aj4ao1t61q.cloudfront.net/esfkyjh1u_forms-close-dark.png'); background-repeat:no-repeat; background-size:14.2px 14.2px; position:absolute; display:block; top:11px; right:9px; overflow:hidden; width:16.2px; height:16.2px; }
@@ -72,7 +72,7 @@
  #_form_11_ button[type="submit"] { padding:20px; font-size:1.5em; }
  #_form_11_ ._inline-style { margin:20px 0 0 !important; }
  }
- #_form_11_ { position:relative; text-align:left; margin:25px auto 0; padding:20px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; *zoom:1; background:#fff !important; border:0px solid #b0b0b0 !important; width:500px; -moz-border-radius:0px !important; -webkit-border-radius:0px !important; border-radius:0px !important; color:#126394 !important; }
+ #_form_11_ { position:relative; text-align:left; margin:25px auto 0; padding:20px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; *zoom:1; background:#fff !important; border:0px solid #b0b0b0 !important; max-width:500px; -moz-border-radius:0px !important; -webkit-border-radius:0px !important; border-radius:0px !important; color:#126394 !important; }
  #_form_11_ ._form-title { font-size:22px; line-height:22px; font-weight:600; margin-bottom:0; }
  #_form_11_:before,#_form_11_:after { content:" "; display:table; }
  #_form_11_:after { clear:both; }
@@ -84,7 +84,19 @@
  #_form_11_ ._form-thank-you { position:relative; left:0; right:0; text-align:center; font-size:18px; }
  @media all and (min-width:320px) and (max-width:667px) { #_form_11_._inline-form._inline-style ._inline-style._button-wrapper { margin-top:20px !important; margin-left:0 !important; }
  }
+ #_form_11_ .iti.iti--allow-dropdown.iti--separate-dial-code { width:100%; }
+ #_form_11_ .iti input { width:100%; height:32px; border:#979797 1px solid; border-radius:4px; }
+ #_form_11_ .iti--separate-dial-code .iti__selected-flag { background-color:#fff; border-radius:4px; }
+ #_form_11_ .iti--separate-dial-code .iti__selected-flag:hover { background-color:rgba(0, 0, 0, 0.05); }
+ #_form_11_ .iti__country-list { border-radius:4px; margin-top:4px; min-width:460px; }
+ #_form_11_ .iti__country-list--dropup { margin-bottom:4px; }
+ #_form_11_ .phone-error-hidden { display:none; }
+ #_form_11_ .phone-error { color:#e40e49; }
+ #_form_11_ .phone-input-error { border:1px solid #e40e49 !important; }
 
  #_form_11_._form_11 { max-width:90vw !important; }
  #_form_11_ ._x65622401 ._form-title { font-size:14px; text-transform:uppercase; color:black; }
  #_form_11_ ._submit { padding:10px 30px !important; border-radius:0 !important; }
+ #_form_11_ ._row._checkbox-radio {display: inline-flex; align-items: start;}
+ #_form_11_ input#field_34Yes\,\ I\ wish\ to\ receive\ digital\ communication\ from\ Green\ Innovation\ Group\ A\/S { margin-top: 5px; margin-right: 10px; }
+ #_form_11_ label { font-weight: 200; }
